@@ -1,0 +1,89 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #282c34;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: rgb(255, 255, 255);
+}
+
+.App {
+  text-align: center;
+  max-width: 600px;
+  margin: 100px auto;
+}
+
+.chat-container {
+  border: 1px solid #444;
+  border-radius: 5px;
+  padding: 20px;
+  overflow-y: auto;
+  height: 500px;
+  margin-bottom: 20px;
+  background-color: #1e1e1e;
+}
+
+.message {
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  max-width: 70%;
+  display: center;
+}
+
+.message.user {
+  background-color: #404040;
+  text-align: left;
+  float: right;
+  clear: both;
+  margin-right: 10px;
+}
+
+.message.bot {
+  background-color: #2c3e50;
+  text-align: left;
+  float: left;
+  clear: both;
+  margin-left: 10px;
+}
+
+.form-control {
+  width: 400px;
+  resize: none; /* Optional: Disables the resizing of the textarea */
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 700px;
+}
+
+.input-container button {
+  margin-top: 10px; /* Adjust the value to your preference */
+  padding: 6px 12px; /* Adjust the value to your preference */
+}
+
+input {
+  flex: 1;
+  padding: 5px;
+  margin-right: 10px;
+  border: 1px solid #444;
+  border-radius: 5px;
+  background-color: #3c3c3c;
+  color: rgb(255, 255, 255);
+}
+
+button {
+  background-color: #3b82f6;
+  color: white;
+  padding: 0.5rem 2rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
