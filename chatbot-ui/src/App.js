@@ -1,10 +1,20 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import './App.css';
+
 
 function App() {
   const [message, setMessage] = useState('');
   const [chatHistory, setChatHistory] = useState([]);
+  
+  // Add this line to define the apiUrl
+  const apiUrl = process.env.NODE_ENV === "production" ? `${window.location.protocol}//${window.location.hostname}:5000/chat` : "http://127.0.0.1:5000/chat";
+
+  useEffect(() => {
+    const chatContainer = document.querySelector('.chat-container');
+    chatContainer.scrollTop = chatContainer.scrollHeight;
+  }, [chatHistory]);
+  
 
   const handleKeyPress = (event) => {
     if (event.key === "Enter" && !event.shiftKey) {
@@ -14,7 +24,7 @@ function App() {
   }; 
 
   const sendMessage = async () => {
-    const response = await axios.post('http://127.0.0.1:5000/chat', { message });
+    const response = await axios.post(apiUrl, { message });
 
     const aiMessage = response.data.message;
 
@@ -25,6 +35,9 @@ function App() {
 
   return (
     <div className="App">
+       <div className="banner">
+       <h1>TKS-GPT Ai Chat</h1>
+    </div>
       <div className="chat-container">
         {chatHistory.map((msg, idx) => (
           <div key={idx} className={`message ${msg.from}`}>

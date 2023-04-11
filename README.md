@@ -69,6 +69,7 @@ Install frontend dependencies:
 
 ## Ubuntu 22.04
 
+Node (v19.x) to current
 ```bash
 sudo apt update
 sudo apt install -y curl
@@ -82,7 +83,10 @@ sudo apt-get install -y build-essential
 ```
 
 ## Debian
-
+Node (v19.x) to current
+```bash
+sudo apt install curl
+```
 ```bash
 curl -fsSL https://deb.nodesource.com/setup_current.x | bash - &&\
 apt-get install -y nodejs

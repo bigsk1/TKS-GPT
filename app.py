@@ -14,22 +14,32 @@ load_dotenv()
 # Load your API key from an environment variable
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder="static", static_url_path="")
+
 CORS(app)
 
 
-@app.route('/chat', methods=['POST'])
+@app.route("/chat", methods=["POST"])
 def chat():
-    user_message = request.json.get('message', '')
+    message = request.json["message"]
+
+    openai.api_key = os.getenv("OPENAI_API_KEY")
+
     response = openai.Completion.create(
-        engine="text-davinci-003",
-        prompt=f"{user_message}\nAI:",
-        temperature=0.8,
-        max_tokens=150,
+        model="text-davinci-003",  # <-- Update the engine here
+        prompt=f"User: {message}\nAssistant:",
+        temperature=0.5,
+        max_tokens=300,
+        top_p=1,
+        frequency_penalty=0,
+        presence_penalty=0,
+        stop=["\n"],
     )
 
     ai_message = response.choices[0].text.strip()
-    return jsonify({'message': ai_message})
+
+    return jsonify({"message": ai_message})
+
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', debug=True)
+    app.run(host='127.0.0.1', port=5000, debug=True)

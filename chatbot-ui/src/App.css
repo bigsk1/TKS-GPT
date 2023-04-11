@@ -6,10 +6,22 @@ body {
   color: rgb(255, 255, 255);
 }
 
+.banner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #282c34;
+  color: white;
+  padding: 0px;
+  font-size: 14px;
+  font-weight: bold;
+  width: 100%;
+}
+
 .App {
   text-align: center;
-  max-width: 600px;
-  margin: 100px auto;
+  max-width: 500px;
+  margin: 25px auto;
 }
 
 .chat-container {
