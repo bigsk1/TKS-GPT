@@ -103,10 +103,11 @@ Navigate to the frontend folder (the folder containing the package.json file, e.
 cd chatbot-ui
 npm install
 ```
+</br>
 
 Set up environment variables:  
 
-Make sure you have a .env file in your backend folder (TKS-GPT folder and chatbot-ui folder) with the required environment variables (such as OPENAI_API_KEY). 
+Make sure you have a .env file in your backend folder (TKS-GPT such as OPENAI_API_KEY). 
 
 ### Change .env.template to .env
 </br>
@@ -132,7 +133,7 @@ TKS-GPT
 │   │   ├── index.js
 │   │   ├── logo.svg
 │   │   └── reportWebVitals.js
-│   ├── .env
+│   ├
 │   ├── .gitignore
 │   ├── package.json
 │   ├── package-lock.json
@@ -162,7 +163,7 @@ source venv/bin/activate
 ```bash
 python3 app.py
 ```
-Your now running backend on http://localhost:3000 - you do not need to open this on browser
+Your now running your backend on http://localhost:3000 - you do not need to open this on browser
 
 keep terminal open and start a new terminal window
 
