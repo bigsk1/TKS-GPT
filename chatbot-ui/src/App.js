@@ -8,7 +8,7 @@ function App() {
   const [chatHistory, setChatHistory] = useState([]);
   
   // Add this line to define the apiUrl
-  const apiUrl = process.env.NODE_ENV === "production" ? `${window.location.protocol}//${window.location.hostname}:5000/chat` : "http://127.0.0.1:5000/chat";
+  const apiUrl = process.env.NODE_ENV === "production" ? `${window.location.protocol}//${window.location.hostname}/chat` : "http://127.0.0.1:5000/chat";
 
   useEffect(() => {
     const chatContainer = document.querySelector('.chat-container');
