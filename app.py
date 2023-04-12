@@ -35,18 +35,30 @@ def chat():
 
     openai.api_key = os.getenv("OPENAI_API_KEY")
 
-    response = openai.Completion.create(
-        model="text-davinci-003",  # <-- Update the engine here
-        prompt=f"User: {message}\nAssistant:",
-        temperature=0.5,
-        max_tokens=300,
-        top_p=1,
-        frequency_penalty=0,
-        presence_penalty=0,
-        stop=["\n"],
-    )
+    try:
+        response = openai.Completion.create(
+            model="text-davinci-003",  # <-- Update the engine here
+            prompt=f"User: {message}\nAssistant:",
+            temperature=0.7,
+            max_tokens=700,
+            top_p=1,
+            frequency_penalty=0,
+            presence_penalty=0,
+            stop=["\n"],
+        )
+        ai_message = response.choices[0].text.strip()
 
-    ai_message = response.choices[0].text.strip()
+    except openai.error.APIError as e:
+        print(f"OpenAI API returned an API Error: {e}")
+        ai_message = "Error: API Error"
+
+    except openai.error.APIConnectionError as e:
+        print(f"Failed to connect to OpenAI API: {e}")
+        ai_message = "Error: Connection Error"
+
+    except openai.error.RateLimitError as e:
+        print(f"OpenAI API request exceeded rate limit: {e}")
+        ai_message = "Error: Rate Limit Exceeded"
 
     return jsonify({"message": ai_message})
 

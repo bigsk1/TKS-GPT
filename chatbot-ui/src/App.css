@@ -22,6 +22,9 @@ body {
   text-align: center;
   max-width: 500px;
   margin: 25px auto;
+  display: flex;
+  flex-direction: column;
+  height: 85vh;
 }
 
 .chat-container {
@@ -29,7 +32,7 @@ body {
   border-radius: 5px;
   padding: 20px;
   overflow-y: auto;
-  height: 500px;
+  flex: 1;
   margin-bottom: 20px;
   background-color: #1e1e1e;
 }
@@ -60,7 +63,7 @@ body {
 
 .form-control {
   width: 400px;
-  resize: none; /* Optional: Disables the resizing of the textarea */
+  resize: none;
 }
 
 .input-container {
@@ -72,8 +75,38 @@ body {
 }
 
 .input-container button {
-  margin-top: 10px; /* Adjust the value to your preference */
-  padding: 6px 12px; /* Adjust the value to your preference */
+  margin-top: 10px;
+  padding: 6px 12px;
+}
+
+.user-message,
+.bot-message {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.user-message p,
+.bot-message p {
+  background-color: #414040;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 0;
+}
+
+.user-message {
+  justify-content: flex-end;
+}
+
+.user-message p {
+  background-color: #3ea542;
+  color: white;
+}
+
+.robot-head {
+  width: 60px; /* Adjust the width to your preference */
+  height: auto;
+  margin-right: 3px;
 }
 
 input {
@@ -98,4 +131,11 @@ button {
 
 button:hover {
   background-color: #0056b3;
+}
+
+/* Media query for smaller screens */
+@media screen and (max-width: 375px) {
+  .form-control {
+    width: 90%;
+  }
 }
