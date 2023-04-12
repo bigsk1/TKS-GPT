@@ -4,9 +4,19 @@
 
 Built with python, flask, node.js and react
 
-All you need is to add your Open AI API Key to the .env and run it!
+Add your Open AI API Key to the .env and run it!
+
 
 </br>
+
+<div align="center">
+
+![TKS Chat](./static/tksgptchat.png)
+
+</div>
+
+</br>
+
 
 To install clone the repo
 
@@ -105,6 +115,12 @@ npm install
 ```
 </br>
 
+Install Axios in your chatbot-ui folder:
+
+```bash
+npm install axios
+```
+
 Set up environment variables:  
 
 Make sure you have a .env file in your backend folder (TKS-GPT such as OPENAI_API_KEY). 
@@ -152,7 +168,7 @@ TKS-GPT
 ## Run your project
 </br>
 
-### Python / Flask Backend
+### Python / Flask
 </br>
 
 In the TKS-GPT project folder
@@ -169,7 +185,7 @@ keep terminal open and start a new terminal window
 
 </br>
 
-### Node and React Frontend
+### Node / React
 </br>
 
 ```bash
@@ -182,6 +198,10 @@ Now open http://localhost:5000
 
 Enter a message and hit send it!
 
+Customize it and when ready take a look at the production branch
+some code is changed in App.js and app.py to work for running on a cloudflare tunnel and using systemd to keep running even after a reboot
+
+https://github.com/bigsk1/TKS-GPT/tree/production
 
 
 
