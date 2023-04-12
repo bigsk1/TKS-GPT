@@ -8,7 +8,7 @@ function App() {
   const [chatHistory, setChatHistory] = useState([]);
   
   // Add this line to define the apiUrl
-  const apiUrl = process.env.NODE_ENV === "production" ? `${window.location.protocol}//${window.location.hostname}/chat` : "http://127.0.0.1:5000/chat";
+  const apiUrl = process.env.NODE_ENV === "production" ? `${window.location.protocol}//${window.location.hostname}/chat` : "http://0.0.0.0:5000/chat";
 
   useEffect(() => {
     const chatContainer = document.querySelector('.chat-container');
@@ -24,14 +24,20 @@ function App() {
   }; 
 
   const sendMessage = async () => {
-    const response = await axios.post(apiUrl, { message });
-
-    const aiMessage = response.data.message;
-
-      
-    setChatHistory([...chatHistory, { message, from: 'user' }, { message: aiMessage, from: 'bot' }]);
-    setMessage('');
+    try {
+      const response = await axios.post(apiUrl, { message });
+  
+      const aiMessage = response.data.message;
+  
+      setChatHistory([...chatHistory, { message, from: 'user' }, { message: aiMessage, from: 'bot' }]);
+      setMessage('');
+    } catch (error) {
+        console.log('Error:', error);
+        console.log('Error response:', error.response);
+        console.log('Error request:', error.request);
+    }
   };
+  
 
   return (
     <div className="App">
