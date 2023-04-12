@@ -171,7 +171,7 @@ TKS-GPT
 │   │   ├── index.js
 │   │   ├── logo.svg
 │   │   └── reportWebVitals.js
-│   ├── .env
+│   ├
 │   ├── .gitignore
 │   ├── package.json
 │   ├── package-lock.json
@@ -243,6 +243,7 @@ On ubuntu you can use systemd to create a service to keep running even after a r
 
 
 make file for systemd service
+add your own user, group and path's
 
 ```bash
 sudo nano /etc/systemd/system/tkschat.service
@@ -306,14 +307,34 @@ journalctl -u tkschat.service
 ```
 
 ## Set up a Cloudflare Tunnel
+https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide
 
 </br>
 
 Your App will be on http://YOUR-LOCAL-IP-ADDRESS:5000
 
 
+</br>
 
+What to make updates and changes? 
 
+first stop systemd server for flask using
+
+```bash
+sudo systemctl stop tkschat.service
+```
+
+in  /TKS-GPT/chatbot-ui
+
+```bash
+npm run build
+```
+
+once built can enabled again using 
+
+```bash
+sudo systemctl restart tkschat.service
+```
 
 
 
