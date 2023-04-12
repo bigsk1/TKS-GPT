@@ -237,7 +237,7 @@ python3 app.py
 ```
 </br>
 
-Will be at https://subdomain.example.com:5000 
+
 
 On ubuntu you can use systemd to create a service to keep running even after a restart
 
@@ -257,7 +257,7 @@ After=network.target
 User=<edit_for_user>
 Group=<edit_for_group>
 WorkingDirectory=/path/to/your/flask/app/TKS-GPT
-Environment="PATH=/home/boss/apps/TKS-GPT/venv/bin"
+Environment="PATH=/path/to/your/TKS-GPT/venv/bin"
 ExecStart=/path/to/your/venv/bin/python3 app.py
 Restart=on-failure
 RestartSec=5s
