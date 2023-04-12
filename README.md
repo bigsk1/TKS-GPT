@@ -316,7 +316,7 @@ Your App will be on http://YOUR-LOCAL-IP-ADDRESS:5000
 
 </br>
 
-What to make updates and changes? 
+Want to make updates and changes? 
 
 first stop systemd server for flask using
 
