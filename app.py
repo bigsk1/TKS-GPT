@@ -45,7 +45,6 @@ def chat():
             top_p=1,
             frequency_penalty=0,
             presence_penalty=0,
-            stop=["\n"],
         )
         ai_message = response.choices[0].message["content"].strip()
 
