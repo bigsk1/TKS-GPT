@@ -33,8 +33,6 @@ def index():
 def chat():
     message = request.json["message"]
 
-    openai.api_key = os.getenv("OPENAI_API_KEY")
-
     try:
         response = openai.Completion.create(
             model="text-davinci-003",  # <-- Update the engine here
