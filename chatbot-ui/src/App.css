@@ -1,6 +1,6 @@
 body {
   font-family: 'Roboto', sans-serif;
-  background-color: #282c34;
+  background-color: #242f3c;
   margin: 0;
   font-family: Arial, sans-serif;
   color: rgb(255, 255, 255);
@@ -10,7 +10,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #282c34;
+  background-color: #242f3c;
   color: white;
   padding: 0px;
   font-size: 14px;
@@ -42,7 +42,8 @@ body {
   margin-bottom: 10px;
   border-radius: 5px;
   max-width: 70%;
-  display: center;
+  display: flex;
+  align-items: center;
 }
 
 .message.user {
@@ -54,7 +55,7 @@ body {
 }
 
 .message.bot {
-  background-color: #2c3e50;
+  background-color: #1f2c39;
   text-align: left;
   float: left;
   clear: both;
@@ -88,7 +89,7 @@ body {
 
 .user-message p,
 .bot-message p {
-  background-color: #414040;
+  background-color: #1f2c39;
   border-radius: 5px;
   padding: 10px;
   margin: 0;
@@ -99,14 +100,14 @@ body {
 }
 
 .user-message p {
-  background-color: #3ea542;
+  background-color: #404040;
   color: white;
 }
 
 .robot-head {
-  width: 60px; /* Adjust the width to your preference */
+  width: 50px; /* Adjust the width to your preference */
   height: auto;
-  margin-right: 3px;
+  margin-right: 1px;
 }
 
 input {
@@ -120,13 +121,22 @@ input {
 }
 
 button {
-  background-color: #3b82f6;
+  background-color: #1d6bec;
   color: white;
   padding: 0.5rem 2rem;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   font-size: 1rem;
+}
+
+textarea.chat-input {
+  font-family: 'Roboto', sans-serif;
+}
+
+textarea.chat-input::placeholder {
+  font-family: 'Roboto', sans-serif;
+  /* Add any other styles you want to apply to the placeholder, like color, opacity, etc. */
 }
 
 button:hover {

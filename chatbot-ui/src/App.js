@@ -68,8 +68,8 @@ function App() {
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           onKeyDown={handleKeyPress}
-          className="form-control"
-          placeholder="Tell me your darkest secrets........"
+          className="form-control chat-input"
+          placeholder="Got questions? I've got bytes of knowledge!...."
           id="userMessage"
           autocorrect="off"
           autocapitalize="off"

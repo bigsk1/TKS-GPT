@@ -34,17 +34,20 @@ def chat():
     message = request.json["message"]
 
     try:
-        response = openai.Completion.create(
-            model="text-davinci-003",  # <-- Update the engine here
-            prompt=f"User: {message}\nAssistant:",
-            temperature=0.7,
+        response = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo",
+            messages=[
+                {"role": "system", "content": "You are a helpful assistant."},
+                {"role": "user", "content": message}
+            ],
             max_tokens=700,
+            temperature=0.7,
             top_p=1,
             frequency_penalty=0,
             presence_penalty=0,
             stop=["\n"],
         )
-        ai_message = response.choices[0].text.strip()
+        ai_message = response.choices[0].message["content"].strip()
 
     except openai.error.APIError as e:
         print(f"OpenAI API returned an API Error: {e}")
