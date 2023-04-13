@@ -21,9 +21,9 @@ const MessageContent = ({ message, from }) => {
       const copyButtons = contentRef.current.querySelectorAll('.message-copy-button');
       copyButtons.forEach((button) => {
         button.addEventListener('click', (e) => {
-          const textToCopy = e.target.getAttribute('data-text-to-copy');
-          copyToClipboard(textToCopy);
-        });
+            const textToCopy = e.target.getAttribute('data-text-to-copy');
+            copyToClipboard(textToCopy);
+          });
       });
       return () => {
         copyButtons.forEach((button) => {
@@ -46,23 +46,23 @@ const MessageContent = ({ message, from }) => {
         </ul>
       );
     }
-
-   // Numbered lists
+  
+    // Numbered lists
 if (message.match(/\n\d+\./)) {
     const items = message.split('\n').filter((item) => item.trim() !== '');
     const responseText = items.shift(); // Get and remove the response text from items array
   
     return (
-      <div>
+      <>
         <p>{responseText}</p>
         <ol className="message-numbered-list">
           {items.map((item, index) => (
-            <li key={index}>{item.replace(/^\d+\.\s*/, '')}<button className="message-copy-button" onClick={() => copyToClipboard(item)}>Copy</button></li>
+            <li key={index}>{item.replace(/^\d+\.\s*/, '')}</li>
           ))}
         </ol>
-      </div>
+      </>
     );
-  }
+  }    
 
     // Email format
 if (message.match(/From: .+\nTo: .+\nSubject: .+/)) {
