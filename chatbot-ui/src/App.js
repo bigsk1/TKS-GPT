@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import './App.css';
 import robotHead from './happyb.gif';
+import MessageContent from './MessageContent';
 
 
 function App() {
@@ -56,17 +57,13 @@ function App() {
         <h1>TKS-GPT Ai Chat</h1>
       </div>
       <div className="chat-container">
-        {chatHistory.map((chat, index) => (
-          <div key={index} className={chat.from === 'user' ? 'user-message' : 'bot-message'}>
-            {chat.from === 'bot' && <img src={robotHead} alt="Robot head" className="robot-head" />}
-            {chat.from === 'bot' && chat.message.startsWith("```") ? (
-              <pre className="message bot">{chat.message.slice(3, -3)}</pre>
-            ) : (
-              <p>{chat.message}</p>
-            )}
-          </div>
-        ))}
-      </div>
+      {chatHistory.map((chat, index) => (
+        <div key={index} className={chat.from === 'user' ? 'user-message' : 'bot-message'}>
+          {chat.from === 'bot' && <img src={robotHead} alt="Robot head" className="robot-head" />}
+          <MessageContent from={chat.from} message={chat.message} /> {/* Use the component here */}
+        </div>
+      ))}
+    </div>
       <form onSubmit={handleFormSubmit} className="input-container">
         <textarea
           value={message}

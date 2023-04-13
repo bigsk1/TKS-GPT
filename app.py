@@ -34,11 +34,16 @@ def chat():
     message = request.json["message"]
 
     try:
+        # Adding explicit instructions to the message
+        message_with_instructions = (
+            f"Provide the response in an appropriate format (code block, bullet points, numbered list, or email template) if applicable: {message}"
+        )
+
         response = openai.ChatCompletion.create(
             model="gpt-3.5-turbo",
             messages=[
                 {"role": "system", "content": "You are a helpful assistant."},
-                {"role": "user", "content": message}
+                {"role": "user", "content": message_with_instructions}
             ],
             max_tokens=700,
             temperature=0.7,
@@ -59,6 +64,12 @@ def chat():
     except openai.error.RateLimitError as e:
         print(f"OpenAI API request exceeded rate limit: {e}")
         ai_message = "Error: Rate Limit Exceeded"
+
+    # You can also add additional logic here to further process
+        # the response before sending it to the front-end.
+    except Exception as e:
+        # Handle exceptions
+        pass
 
     return jsonify({"message": ai_message})
 

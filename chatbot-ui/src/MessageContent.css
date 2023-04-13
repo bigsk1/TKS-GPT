@@ -1,0 +1,57 @@
+.message-content pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+  
+  .message-content ul,
+  .message-content ol {
+    padding-left: 20px;
+  }
+  
+  .message-email {
+    padding-left: 20px;
+  }
+  
+  .message-content .message-code {
+    background-color: #272727; /* Change the background color to black-ish */
+    border-radius: 5px;
+    padding: 12px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    position: relative;
+  }
+  
+  .message-content .message-code pre {
+    margin: 0;
+  }
+  
+  .message-content {
+    text-align: left;
+  }
+  
+  .message-content .message-code code {
+    color: #fff; /* Change the text color to white */
+  }
+  
+  .message-copy-button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: #555;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    padding: 2px 6px;
+    font-size: 12px;
+    cursor: pointer;
+  }
+  
+  .message-bullet-list,
+  .message-numbered-list {
+    margin-bottom: 0;
+  }
+  
+  .message-email p {
+    margin: 0;
+  }
+  

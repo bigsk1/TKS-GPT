@@ -20,7 +20,7 @@ body {
 
 .App {
   text-align: center;
-  max-width: 500px;
+  max-width: 95%;
   margin: 25px auto;
   display: flex;
   flex-direction: column;
@@ -38,12 +38,9 @@ body {
 }
 
 .message {
-  padding: 10px;
-  margin-bottom: 10px;
   border-radius: 5px;
-  max-width: 70%;
-  display: flex;
-  align-items: center;
+  padding: 1rem;
+  margin-bottom: 1rem;
 }
 
 .message.user {
@@ -55,11 +52,17 @@ body {
 }
 
 .message.bot {
-  background-color: #1f2c39;
-  text-align: left;
-  float: left;
-  clear: both;
-  margin-left: 10px;
+  background-color: #f7f7f7;
+  color: #222;
+  border: 1px solid #ccc;
+}
+
+.message-code {
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  padding: 1rem;
+  font-family: monospace;
+  overflow-x: auto;
 }
 
 .form-control {
@@ -72,7 +75,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  max-width: 700px;
+  max-width: 100%;
 }
 
 .input-container button {
@@ -144,8 +147,20 @@ button:hover {
 }
 
 /* Media query for smaller screens */
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 420px) {
   .form-control {
     width: 90%;
+  }
+}
+
+/* Media query for larger screens */
+@media screen and (min-width: 601px) {
+  .App {
+    height: 90vh; /* Adjust the height for larger screens */
+  }
+
+  .chat-container {
+    width: 90%;
+    margin: 0 auto;
   }
 }
