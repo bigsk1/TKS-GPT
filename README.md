@@ -7,7 +7,7 @@
 
 <div align="center">
 
-  ![TKS Chat](./static/tksgptchat.png)
+[![TKS Chat](https://img.youtube.com/vi/vUt99nVEUGM/0.jpg)](https://www.youtube.com/watch?v=vUt99nVEUGM)
 
 </div>
 
