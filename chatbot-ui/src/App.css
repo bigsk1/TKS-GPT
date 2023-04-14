@@ -24,7 +24,7 @@ body {
   margin: 25px auto;
   display: flex;
   flex-direction: column;
-  height: 85vh;
+  height: 87vh;
 }
 
 .chat-container {
@@ -154,13 +154,33 @@ button:hover {
 }
 
 /* Media query for larger screens */
-@media screen and (min-width: 601px) {
+@media screen and (min-width: 650px) {
   .App {
-    height: 90vh; /* Adjust the height for larger screens */
+    height: 91vh; /* Adjust the height for larger screens */
   }
 
   .chat-container {
-    width: 90%;
+    width: 70%;
     margin: 0 auto;
+  }
+
+  .input-container {
+    padding: 20px;
+  }
+} 
+
+/* Media query for even larger screens */
+@media screen and (min-width: 1450px) {
+  .App {
+    height: 93vh; /* Adjust the height for larger screens */
+  }
+
+  .chat-container {
+    width: 65%;
+    margin: 0 auto;
+  }
+
+  .input-container {
+    padding: 20px;
   }
 }
