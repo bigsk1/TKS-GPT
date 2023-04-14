@@ -70,7 +70,7 @@ function App() {
   return (
     <div className="App">
       <div className="banner">
-        <h1>TKS-GPT Ai Chat</h1>
+        <h1>GPT Ai Chat</h1>
       </div>
       <div className="chat-container">
         {chatHistory.map((chat, index) => (

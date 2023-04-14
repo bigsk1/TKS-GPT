@@ -66,7 +66,7 @@ body {
 }
 
 .form-control {
-  height: 8vh;
+  height: 10vh;
   width: 400px;
   resize: none;
 }
@@ -109,7 +109,7 @@ body {
 }
 
 .robot-head {
-  width: 50px; /* Adjust the width to your preference */
+  width: 40px; /* Adjust the width to your preference */
   height: auto;
   margin-right: 1px;
 }
