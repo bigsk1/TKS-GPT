@@ -3,12 +3,22 @@ import axios from 'axios';
 import './App.css';
 import robotHead from './happyb.gif';
 import MessageContent from './MessageContent';
-
+import Prompts from './Prompts';
 
 function App() {
   const [message, setMessage] = useState('');
   const [chatHistory, setChatHistory] = useState([]);
-  
+  const [showPrompts, setShowPrompts] = useState(false);
+
+  const handlePromptSelect = (prompt) => {
+    setMessage(prompt);
+    setShowPrompts(false);
+  };
+
+  const togglePrompts = () => {
+    setShowPrompts(!showPrompts);
+  };
+
   const apiUrl = process.env.NODE_ENV === "production" ? `${window.location.protocol}//${window.location.hostname}/chat` : "http://0.0.0.0:5000/chat";
 
   useEffect(() => {
@@ -30,7 +40,13 @@ function App() {
 
   const sendMessage = async () => {
     try {
-      const response = await axios.post(apiUrl, { message });
+      // Include the entire conversation history in the API call
+      const conversation = chatHistory.map((chat) => ({
+        from: chat.from,
+        message: chat.message,
+      }));
+  
+      const response = await axios.post(apiUrl, { message, chat_history: conversation });
   
       console.log('Response:', response);
   
@@ -57,13 +73,13 @@ function App() {
         <h1>TKS-GPT Ai Chat</h1>
       </div>
       <div className="chat-container">
-      {chatHistory.map((chat, index) => (
-        <div key={index} className={chat.from === 'user' ? 'user-message' : 'bot-message'}>
-          {chat.from === 'bot' && <img src={robotHead} alt="Robot head" className="robot-head" />}
-          <MessageContent from={chat.from} message={chat.message} /> {/* Use the component here */}
-        </div>
-      ))}
-    </div>
+        {chatHistory.map((chat, index) => (
+          <div key={index} className={chat.from === 'user' ? 'user-message' : 'bot-message'}>
+            {chat.from === 'bot' && <img src={robotHead} alt="Robot head" className="robot-head" />}
+            <MessageContent from={chat.from} message={chat.message} /> {/* Use the component here */}
+          </div>
+        ))}
+      </div>
       <form onSubmit={handleFormSubmit} className="input-container">
         <textarea
           value={message}
@@ -79,6 +95,11 @@ function App() {
         />
         <button type="submit">Send it!</button>
       </form>
+      <Prompts
+        onSelect={handlePromptSelect}
+        showPrompts={showPrompts}
+        togglePrompts={togglePrompts}
+      />
     </div>
   );
 }

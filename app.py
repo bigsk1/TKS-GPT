@@ -1,4 +1,3 @@
-# Standard library
 import os
 import logging
 
@@ -32,19 +31,21 @@ def index():
 @app.route("/chat", methods=["POST"])
 def chat():
     message = request.json["message"]
+    chat_history = request.json["chat_history"]
 
     try:
-        # Adding explicit instructions to the message
-        message_with_instructions = (
-            f"Provide the response in an appropriate format (code block, bullet points, numbered list, or email template) if applicable: {message}"
-        )
+        messages = [{"role": "system", "content": "You are a helpful assistant."}]
+        for chat in chat_history:
+            # Change the role from 'bot' to 'assistant' here
+            role = chat["from"] if chat["from"] != "bot" else "assistant"
+            messages.append({"role": role, "content": chat["message"]})
+        messages.append({"role": "user", "content": message})
+        
+        print("Request messages:", messages)
 
         response = openai.ChatCompletion.create(
             model="gpt-3.5-turbo",
-            messages=[
-                {"role": "system", "content": "You are a helpful assistant."},
-                {"role": "user", "content": message_with_instructions}
-            ],
+            messages=messages,
             max_tokens=700,
             temperature=0.7,
             top_p=1,
@@ -65,11 +66,12 @@ def chat():
         print(f"OpenAI API request exceeded rate limit: {e}")
         ai_message = "Error: Rate Limit Exceeded"
 
-    # You can also add additional logic here to further process
+        # You can also add additional logic here to further process
         # the response before sending it to the front-end.
     except Exception as e:
-        # Handle exceptions
-        pass
+        print(f"Unexpected error occurred: {e}")
+        ai_message = f"Error: Unexpected Error - {e}"
+
 
     return jsonify({"message": ai_message})
 

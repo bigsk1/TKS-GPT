@@ -66,6 +66,7 @@ body {
 }
 
 .form-control {
+  height: 8vh;
   width: 400px;
   resize: none;
 }
@@ -154,13 +155,29 @@ button:hover {
 }
 
 /* Media query for larger screens */
-@media screen and (min-width: 650px) {
+@media screen and (min-width: 750px) {
   .App {
     height: 91vh; /* Adjust the height for larger screens */
   }
 
   .chat-container {
-    width: 70%;
+    width: 75%;
+    margin: 0 auto;
+  }
+
+  .input-container {
+    padding: 20px;
+  }
+} 
+
+/* Media query for larger screens */
+@media screen and (min-width: 950px) {
+  .App {
+    height: 91vh; /* Adjust the height for larger screens */
+  }
+
+  .chat-container {
+    width: 65%;
     margin: 0 auto;
   }
 
@@ -176,7 +193,7 @@ button:hover {
   }
 
   .chat-container {
-    width: 65%;
+    width: 57%;
     margin: 0 auto;
   }
 
