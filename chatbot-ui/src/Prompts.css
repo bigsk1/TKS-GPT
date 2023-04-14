@@ -1,6 +1,6 @@
 .prompts-container {
     position: fixed;
-    top: 10px;
+    top: 12px;
     right: 12px;
     z-index: 100;
   }
@@ -61,7 +61,7 @@
   
   @media (max-width: 1350px) {
     .prompts-container {
-      right: 0;
+      right: 3px;
     }
   
     .prompts-list {

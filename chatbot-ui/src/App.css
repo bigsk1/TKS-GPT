@@ -148,14 +148,14 @@ button:hover {
 }
 
 /* Media query for smaller screens */
-@media screen and (max-width: 420px) {
+@media screen and (max-width: 470px) {
   .form-control {
     width: 90%;
   }
 }
 
 /* Media query for larger screens */
-@media screen and (min-width: 750px) {
+@media screen and (min-width: 770px) {
   .App {
     height: 91vh; /* Adjust the height for larger screens */
   }
@@ -177,7 +177,7 @@ button:hover {
   }
 
   .chat-container {
-    width: 65%;
+    width: 69%;
     margin: 0 auto;
   }
 
