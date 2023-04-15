@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import './App.css';
-import robotHead from './happyb.gif';
 import MessageContent from './MessageContent';
 import Prompts from './Prompts';
 
@@ -75,7 +74,6 @@ function App() {
       <div className="chat-container">
         {chatHistory.map((chat, index) => (
           <div key={index} className={chat.from === 'user' ? 'user-message' : 'bot-message'}>
-            {chat.from === 'bot' && <img src={robotHead} alt="Robot head" className="robot-head" />}
             <MessageContent from={chat.from} message={chat.message} /> {/* Use the component here */}
           </div>
         ))}
