@@ -6,6 +6,10 @@ import Prompts from './Prompts';
 
 function App() {
   const [message, setMessage] = useState('');
+  const processAIResponse = (response) => {
+    // Remove any leading "1." from the response, but not if it's part of a list or if there's a newline immediately after the "1."
+    return response.replace(/^(?<!\n)1\.(?!\s*\n)\s*/, "");
+  }; 
   const [chatHistory, setChatHistory] = useState([]);
   const [showPrompts, setShowPrompts] = useState(false);
 
@@ -54,10 +58,10 @@ function App() {
       console.log('AI Message:', aiMessage);
   
       if (!aiMessage) {
-        aiMessage = 'I\'m sorry, I didn\'t understand that. Wayne says I\'m a dumbass. Could you rephrase your question?';
+        aiMessage = processAIResponse(aiMessage);
       }
   
-      setChatHistory([...chatHistory, { message, from: 'user' }, { message: aiMessage, from: 'bot' }]);
+      setChatHistory([...chatHistory, { message, from: 'user' }, { message: processAIResponse(aiMessage), from: 'bot' }]);
       setMessage('');
     } catch (error) {
       console.log('Error:', error);
