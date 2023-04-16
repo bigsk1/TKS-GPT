@@ -3,6 +3,8 @@ import axios from 'axios';
 import './App.css';
 import MessageContent from './MessageContent';
 import Prompts from './Prompts';
+import SavedChats from './SavedChats';
+
 
 function App() {
   const [message, setMessage] = useState('');
@@ -12,6 +14,9 @@ function App() {
   }; 
   const [chatHistory, setChatHistory] = useState([]);
   const [showPrompts, setShowPrompts] = useState(false);
+  const [showSavedChats, setShowSavedChats] = useState(false);
+  const [savedChats, setSavedChats] = useState([]);
+
 
   const handlePromptSelect = (prompt) => {
     setMessage(prompt);
@@ -21,6 +26,10 @@ function App() {
   const togglePrompts = () => {
     setShowPrompts(!showPrompts);
   };
+
+  const toggleSavedChats = () => {
+    setShowSavedChats(!showSavedChats);
+  };  
 
   const apiUrl = process.env.NODE_ENV === "production" ? `${window.location.protocol}//${window.location.hostname}/chat` : "http://0.0.0.0:5000/chat";
 
@@ -72,6 +81,9 @@ function App() {
 
   return (
     <div className="App">
+      <button onClick={toggleSavedChats} className="saved-chats-btn">
+        Saved Chats
+      </button>
       <div className="banner">
         <h1>GPT Ai Chat</h1>
       </div>
@@ -101,6 +113,13 @@ function App() {
         onSelect={handlePromptSelect}
         showPrompts={showPrompts}
         togglePrompts={togglePrompts}
+      />
+      <SavedChats
+       showSavedChats={showSavedChats}
+       toggleSavedChats={toggleSavedChats}
+       setCurrentChat={setChatHistory}
+       clearCurrentChat={() => setChatHistory([])}
+       currentChat={chatHistory}
       />
     </div>
   );

@@ -108,12 +108,6 @@ body {
   color: white;
 }
 
-.robot-head {
-  width: 40px; /* Adjust the width to your preference */
-  height: auto;
-  margin-right: 1px;
-}
-
 input {
   flex: 1;
   padding: 5px;
@@ -132,6 +126,16 @@ button {
   border-radius: 5px;
   cursor: pointer;
   font-size: 1rem;
+}
+
+.saved-chats-btn {
+  position: absolute;
+  top: 10px;
+  left: 5px;
+  background-color: transparent;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
 }
 
 textarea.chat-input {
