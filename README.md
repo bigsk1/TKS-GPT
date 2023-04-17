@@ -1,6 +1,13 @@
 # TKS-GPT
 
-## AI Chat Bot
+## AI Chat Bot for running on your local network 
+
+</br>
+
+## *See the production branch in this repo for project updates, to use Docker and to run it on a cloudflare tunnel on your domain name.
+https://github.com/bigsk1/TKS-GPT/tree/production
+
+</br>
 
 Built with python, flask, node.js and react
 
@@ -198,8 +205,7 @@ Now open http://localhost:5000
 
 Enter a message and hit send it!
 
-Customize it and when ready take a look at the production branch
-some code is changed in App.js and app.py to work for running on a cloudflare tunnel and using systemd to keep running even after a reboot
+Customize it and when ready take a look at the production branch to run on a cloudflare tunnel and using systemd to keep running even after a reboot
 
 https://github.com/bigsk1/TKS-GPT/tree/production
 
