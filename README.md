@@ -64,6 +64,15 @@ cd TKS-GPT
 
 </br>
 
+Pull the latest image 
+
+```bash
+docker pull ghcr.io/bigsk1/tks-gpt/tks-gpt:latest
+```
+</br>
+
+Build the image yourself
+
 You can use docker cli in same folder as the Dockerfile
 
 ```bash
