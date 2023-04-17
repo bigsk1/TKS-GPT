@@ -17,8 +17,14 @@ GPT 3.5 turbo with chat history but should also work with Chat GPT 4 you just ne
 
 </br>
 
+---
+
+</br>
+
 <p align="center">
 <img src="./static/tks-gpt-chat-bot.png">
+</br>
+<strong>Save, Load and Delete Chats</strong>
 </p>
 
 
