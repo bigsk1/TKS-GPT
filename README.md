@@ -62,13 +62,13 @@ cd TKS-GPT
 
 ## The simplest way is with Docker and Cloudflare tunnel
 
+One command 
 </br>
 
-Pull the latest image 
-
 ```bash
-docker pull ghcr.io/bigsk1/tks-gpt/tks-gpt:latest
+docker run -d -p 5000:5000 --name tks-gpt --env OPENAI_API_KEY=your_openai_api_key --restart always ghcr.io/bigsk1/tks-gpt/tks-gpt:latest
 ```
+
 </br>
 
 Build the image yourself

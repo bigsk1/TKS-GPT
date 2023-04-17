@@ -3,7 +3,7 @@ version: '3.8'
 services:
   app:
     build: .
-    image: ghcr.io/bigsk1/tks-gpt/tks-gpt:latest
+    image: tks-gpt
     restart: unless-stopped
     environment:
       - OPENAI_API_KEY=<your_openai_api_key>
