@@ -1,6 +1,6 @@
 # TKS-GPT
 
-## Open AI Chat Bot running in Production mode and using a Cloudflare Tunnel
+## Open AI Chat Bot using HTTPS
 
 
 </br>
@@ -32,11 +32,20 @@ Project Root
 
 </br>
 
-Built with python, flask, node.js and react
-
-Add your Open AI API Key to the .env and run it!
+### Built with python, flask, node.js and react for x86_64 (amd64) architectures and should work on docker desktop also. 
 
 </br>
+
+## Uses Chat GPT 3.5 turbo with chat history but should also work with Chat GPT 4 you just need the api key for it. Is able to do lists, bullet points, email templates and code blocks! 
+
+</br>
+
+## Add your Open AI API Key and run it!
+
+</br>
+
+# Install x86_64 (amd64)
+
 
 To install clone the repo with production branch
 
@@ -47,8 +56,53 @@ git clone --single-branch --branch production https://github.com/bigsk1/TKS-GPT.
 ```bash
 cd TKS-GPT
 ```
+</br>
+
+# Docker CLI / Docker Compose
+
+## The simplest way is with Docker and Cloudflare tunnel
+
+</br>
+
+You can use docker cli in same folder as the Dockerfile
+
+```bash
+docker build -t your_image_name .
+```
+```bash
+docker run -d -p 5000:5000 --name tksgpt-container --env OPENAI_API_KEY=ENTER_YOUR_OPEN_AI_APIKEY_HERE your_image_name
+```
+
+or
+</br>
+
+In the docker-compose.yml file add your Open AI Api key 
+
+```bash
+version: '3.8'
+
+services:
+  app:
+    build: .
+    image: your_custom_image_name
+    restart: unless-stopped
+    environment:
+      - OPENAI_API_KEY=your_openai_api_key
+    ports:
+      - "5000:5000"
+```
+and then 
+```bash
+docker-compose up -d
+```
+Your app will be running on http://localhost:5000 but you need https for it to work, you can see it on http but no api will be sent, see the bottom of readme for Cloudflare tunnel setup. Is possible Nginix Proxy manager could also do this. ( un tested ) 
+
+</br>
+
+# Linux / Debian systems 
+
 THERE ARE TWO PARTS TO YOUR PROJECT A BACKEND AND A FRONTEND
-## BACKEND
+## BACKEND - python3 and flask
 </br>
 
 Active Virtual Enviroment ( optional but recommended )
@@ -76,7 +130,7 @@ Exit out of virtual enviroment and back to the TKS-GPT folder ( ctl + c )
 
 </br>
 
-## FRONTEND
+## FRONTEND - node and react
 
 Install Node.js and npm:
 
@@ -86,12 +140,11 @@ Make sure Node.js and npm are installed on your system. You can check if they ar
 node -v
 npm -v
 ```
+You need Node version 18+
+
 
 If not installed, you can download them from the official Node.js website https://nodejs.org/en/download/
 
-</br>
-
-### On Linux / Debian systems 
 </br>
 
 See here https://github.com/nodesource/distributions
@@ -155,14 +208,14 @@ After completing these steps, you should be able to run both the backend and fro
 ### TREE VIEW of your project
 ```bash
 TKS-GPT
+├── app.py
 ├── chatbot-ui
+│   ├── build
+│   │   └── ...
+│   ├── node_modules
+│   │   └── ...
 │   ├── public
-│   │   ├── favicon.ico
-│   │   ├── index.html
-│   │   ├── logo192.png
-│   │   ├── logo512.png
-│   │   ├── manifest.json
-│   │   └── robots.txt
+│   │   └── ...
 │   ├── src
 │   │   ├── App.css
 │   │   ├── App.js
@@ -170,21 +223,26 @@ TKS-GPT
 │   │   ├── index.css
 │   │   ├── index.js
 │   │   ├── logo.svg
-│   │   └── reportWebVitals.js
+│   │   ├── MessageContent.js
+│   │   ├── Prompts.js
+│   │   ├── reportWebVitals.js
+│   │   ├── SavedChats.css
+│   │   ├── SavedChats.js
+│   │   ├── setupTests.js
+│   │   └── ...
 │   ├
 │   ├── .gitignore
 │   ├── package.json
-│   ├── package-lock.json
-│   └── README.md
-├── venv     (Python virtual environment folder)
-│   ├── bin
-│   ├── include
-│   ├── lib
-│   └── lib64
-├── app.py
+│   └── package-lock.json
+├── .dockerignore
+├── Dockerfile
+├── docker-compose.yml
 ├── .env
-└── requirements.txt
-
+├── flask_app.log
+├── .gitignore
+├── requirements.txt
+└── venv
+    └── ...
 ```
 </br>
 
@@ -306,17 +364,20 @@ check systemd logs for errors
 journalctl -u tkschat.service
 ```
 
-## Set up a Cloudflare Tunnel
+# Set up a Cloudflare Tunnel for https
 https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide
 
 </br>
 
 Your App will be on http://YOUR-LOCAL-IP-ADDRESS:5000
 
+</br>
+
+The easiest way is to use the UI in zero trust and make a tunnel and assign it a subdomain. Allow your domain as origin, POST and GET methods, all headers.
 
 </br>
 
-Want to make updates and changes? 
+Want to make updates and changes and using systemd? 
 
 first stop systemd server for flask using
 
