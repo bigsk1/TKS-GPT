@@ -50,7 +50,7 @@ const SavedChats = ({ showSavedChats, toggleSavedChats, setCurrentChat, clearCur
             <button onClick={() => loadChat(savedChat.chat)} className="load-chat-btn">
               Load
             </button>
-            <span className="saved-chat-preview">{savedChat.chat[0]?.message.slice(0, 75)}...</span>
+            <span className="saved-chat-preview">{savedChat.chat[0]?.message.slice(0, 150)}...</span>
             <button onClick={() => deleteChat(savedChat.id)} className="delete-chat-btn">
               Delete
             </button>
