@@ -1,13 +1,10 @@
 import os
 import logging
-
-# Third-party libraries
 from dotenv import load_dotenv
 from flask import Flask, send_from_directory, request, jsonify
 from flask_cors import CORS
 import openai
-
-logging.basicConfig(filename='flask_app.log', level=logging.WARNING)
+from flask.logging import default_handler
 
 # Load variables from the .env file
 load_dotenv()
@@ -21,10 +18,28 @@ app = Flask(__name__, static_folder='chatbot-ui/build', static_url_path='')
 # Enables Cross-Origin Resource Sharing for your Flask app, allowing your React app to make requests to the Flask server
 CORS(app)
 
+# Logging configuration
+class RequestFormatter(logging.Formatter):
+    def format(self, record):
+        record.url = request.url
+        record.remote_addr = request.headers.get('X-Forwarded-For', request.remote_addr)
+        record.method = request.method
+        record.path = request.path
+        record.user_agent = request.headers.get('User-Agent')
+        return super().format(record)
+
+handler = logging.FileHandler('flask_app.log')
+handler.setLevel(logging.INFO)
+handler.setFormatter(RequestFormatter('%(asctime)s [%(levelname)s] %(remote_addr)s requested %(method)s %(path)s %(url)s\n%(message)s\nUser Agent: %(user_agent)s\n'))
+
+app.logger.setLevel(logging.INFO)
+app.logger.addHandler(handler)
+app.logger.removeHandler(default_handler)
 
 # Sets up the root route to serve the index.html file from the React build folder.
 @app.route('/')
 def index():
+    app.logger.info('Serving index.html')
     return send_from_directory(app.static_folder, 'index.html')
 
 # Sets up the /chat route to handle chat requests from the React app.
