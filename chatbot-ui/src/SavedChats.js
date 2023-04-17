@@ -47,7 +47,7 @@ const SavedChats = ({ showSavedChats, toggleSavedChats, setCurrentChat, clearCur
       <ul className="saved-chats-list">
         {savedChats.map((savedChat) => (
           <li key={savedChat.id}>
-            <button onClick={() => loadChat(savedChat.chat)} className="load-chat-btn"> {/* Add the missing class */}
+            <button onClick={() => loadChat(savedChat.chat)} className="load-chat-btn">
               Load
             </button>
             <span className="saved-chat-preview">{savedChat.chat[0]?.message.slice(0, 75)}...</span>
