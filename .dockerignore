@@ -1,0 +1,12 @@
+.env
+env
+flask_app.log
+venv
+node_modules
+chatbot-ui/node_modules
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.git
+.gitignore

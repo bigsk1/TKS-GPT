@@ -1,4 +1,5 @@
 import os
+import sys
 import logging
 from dotenv import load_dotenv
 from flask import Flask, send_from_directory, request, jsonify
@@ -28,12 +29,19 @@ class RequestFormatter(logging.Formatter):
         record.user_agent = request.headers.get('User-Agent')
         return super().format(record)
 
-handler = logging.FileHandler('flask_app.log')
-handler.setLevel(logging.INFO)
-handler.setFormatter(RequestFormatter('%(asctime)s [%(levelname)s] %(remote_addr)s requested %(method)s %(path)s %(url)s\n%(message)s\nUser Agent: %(user_agent)s\n'))
+file_handler = logging.FileHandler('flask_app.log')
+file_handler.setLevel(logging.INFO)
+
+stdout_handler = logging.StreamHandler(sys.stdout)
+stdout_handler.setLevel(logging.INFO)
+
+formatter = RequestFormatter('%(asctime)s [%(levelname)s] %(remote_addr)s requested %(method)s %(path)s %(url)s\n%(message)s\nUser Agent: %(user_agent)s\n')
+
+for handler in [file_handler, stdout_handler]:
+    handler.setFormatter(formatter)
+    app.logger.addHandler(handler)
 
 app.logger.setLevel(logging.INFO)
-app.logger.addHandler(handler)
 app.logger.removeHandler(default_handler)
 
 # Sets up the root route to serve the index.html file from the React build folder.
