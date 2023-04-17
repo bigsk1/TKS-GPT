@@ -44,7 +44,7 @@ Project Root
 
 </br>
 
-# Install x86_64 (amd64)
+# Install
 
 
 To install clone the repo with production branch
@@ -148,6 +148,7 @@ If not installed, you can download them from the official Node.js website https:
 </br>
 
 See here https://github.com/nodesource/distributions
+
 Install frontend dependencies:
 
 ## Ubuntu 22.04
@@ -313,8 +314,8 @@ Description=TKS Chat Bot
 After=network.target
 
 [Service]
-User=<edit_for_user>
-Group=<edit_for_group>
+User=edit_for_user  ( normally your user name )
+Group=edit_for_group  ( normally your user name )
 WorkingDirectory=/path/to/your/flask/app/TKS-GPT
 Environment="PATH=/path/to/your/TKS-GPT/venv/bin"
 ExecStart=/path/to/your/venv/bin/python3 app.py
@@ -373,7 +374,7 @@ Your App will be on http://YOUR-LOCAL-IP-ADDRESS:5000
 
 </br>
 
-The easiest way is to use the UI in zero trust and make a tunnel and assign it a subdomain. Allow your domain as origin, POST and GET methods, all headers.
+The easiest way is to use the UI in zero trust and make a tunnel and assign it a domain or subdomain. Allow your domain as origin, POST and GET methods, all headers.
 
 </br>
 
