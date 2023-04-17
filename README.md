@@ -1,8 +1,12 @@
 # TKS-GPT
 
-## Open AI Chat Bot using HTTPS
+## Open AI Chat Bot
 
+GPT 3.5 turbo with chat history but should also work with Chat GPT 4 you just need the api key for it. Is able to do lists, bullet points, email templates and code blocks! 
 
+</br>
+
+## Add your Open AI API Key and run it!
 </br>
 
 <div align="center">
@@ -10,6 +14,13 @@
 [![TKS Chat](https://img.youtube.com/vi/vUt99nVEUGM/0.jpg)](https://www.youtube.com/watch?v=vUt99nVEUGM)
 
 </div>
+
+</br>
+
+<p align="center">
+<img src="./static/tks-gpt-chat-bot.png">
+</p>
+
 
 </br>
 
@@ -36,21 +47,13 @@ Project Root
 
 </br>
 
-## Uses Chat GPT 3.5 turbo with chat history but should also work with Chat GPT 4 you just need the api key for it. Is able to do lists, bullet points, email templates and code blocks! 
-
-</br>
-
-## Add your Open AI API Key and run it!
-
-</br>
-
 # Install
 
 
-To install clone the repo with production branch
+To install clone the repo
 
 ```bash
-git clone --single-branch --branch production https://github.com/bigsk1/TKS-GPT.git
+git clone https://github.com/bigsk1/TKS-GPT.git
 ```
 
 ```bash
@@ -58,6 +61,7 @@ cd TKS-GPT
 ```
 </br>
 
+### Recommended - fast and easy
 # Docker CLI / Docker Compose
 
 ## The simplest way is with Docker and Cloudflare tunnel
@@ -68,6 +72,10 @@ One command
 ```bash
 docker run -d -p 5000:5000 --name tks-gpt --env OPENAI_API_KEY=your_openai_api_key --restart always ghcr.io/bigsk1/tks-gpt/tks-gpt:latest
 ```
+
+</br>
+
+---
 
 </br>
 
@@ -141,6 +149,8 @@ Exit out of virtual enviroment and back to the TKS-GPT folder ( ctl + c )
 
 ## FRONTEND - node and react
 
+---
+
 Install Node.js and npm:
 
 Make sure Node.js and npm are installed on your system. You can check if they are installed by running:
@@ -162,6 +172,8 @@ Install frontend dependencies:
 
 ## Ubuntu 22.04
 
+---
+
 Node (v19.x) to current
 ```bash
 sudo apt update
@@ -176,6 +188,9 @@ sudo apt-get install -y build-essential
 ```
 
 ## Debian
+
+---
+
 Node (v19.x) to current
 ```bash
 sudo apt install curl
@@ -281,6 +296,9 @@ TKS-GPT
 </br>
 
 ## Run your project
+
+---
+
 </br>
 
 
@@ -373,6 +391,7 @@ check systemd logs for errors
 ```bash
 journalctl -u tkschat.service
 ```
+</br>
 
 # Set up a Cloudflare Tunnel for https
 https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide
@@ -384,6 +403,10 @@ Your App will be on http://YOUR-LOCAL-IP-ADDRESS:5000
 </br>
 
 The easiest way is to use the UI in zero trust and make a tunnel and assign it a domain or subdomain. Allow your domain as origin, POST and GET methods, all headers.
+
+</br>
+
+---
 
 </br>
 
