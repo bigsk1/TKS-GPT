@@ -1,8 +1,6 @@
 # TKS-GPT    
 <img src=https://img.shields.io/github/last-commit/bigsk1/tks-gpt>
 
-</br>
-
 ## Run your own AI Chat Bot 🤖
 
 </br>
@@ -22,7 +20,7 @@ Add your Open AI API Key and run it on your local network http://localhost:5000 
 </br>
 
 <p align="center">
-<img src="./static/tks-gpt-ai.png" style="width: 50%;">
+<img src="./static/tks-gpt-ai.png" style="width: 40%;">
 </br>
 <strong>Host your own Ai Chat bot</strong>
 </p>
@@ -32,7 +30,7 @@ Add your Open AI API Key and run it on your local network http://localhost:5000 
 </br>
 
 <p align="center">
-<img src="./static/tks-gpt-chat-bot.png">
+<img src="./static/tks-gpt-saved-chats.png" style="width: 40%;">
 </br>
 <strong>Save, Load and Delete Chats</strong>
 </p>
