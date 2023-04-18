@@ -1,22 +1,31 @@
-# TKS-GPT
+# TKS-GPT    
+<img src=https://img.shields.io/github/last-commit/bigsk1/tks-gpt>
 
-## Open AI Chat Bot
+</br>
 
-GPT 3.5 turbo with chat history but should also work with Chat GPT 4 you just need the api key for it. Is able to do lists, bullet points, email templates and code blocks. Saved chat history, huge list of prompts added ⌵
+## Run your own AI Chat Bot 🤖
+
+</br>
+
+Works with GPT 3.5 turbo and chat history but should also work with Chat GPT 4 you just need the api key for it. Is able to do lists, bullet points, email templates and code blocks. Saved chat history, huge list of prompts added ⌵
 
 Add your Open AI API Key and run it on your local network http://localhost:5000 or with https:// your.domain.com either one works!
 
 </br>
 
-</br>
 
-<div align="center">
-
-[![TKS Chat Video](https://img.youtube.com/vi/vUt99nVEUGM/0.jpg)](https://www.youtube.com/watch?v=vUt99nVEUGM)
-
-</div>
+1. [Clone the repo](#clone-the-repo)
+2. [Install with Docker CLI / Docker Compose](#install-with-docker-cli--docker-compose)
+3. [Build on Linux or Debian](#build-on-linux-or-debian)
+4. [Set up a Cloudflare Tunnel for HTTPS optional](#set-up-a-cloudflare-tunnel-for-https-optional)
 
 </br>
+
+<p align="center">
+<img src="./static/tks-gpt-ai.png" style="width: 50%;">
+</br>
+<strong>Host your own Ai Chat bot</strong>
+</p>
 
 ---
 
@@ -28,8 +37,9 @@ Add your Open AI API Key and run it on your local network http://localhost:5000 
 <strong>Save, Load and Delete Chats</strong>
 </p>
 
-
 </br>
+
+---
 
 </br>
 
@@ -70,10 +80,10 @@ Project Root
 
 </br>
 
-# Install
 
-
-To install clone the repo
+## Clone the repo
+---
+</br>
 
 ```bash
 git clone https://github.com/bigsk1/TKS-GPT.git
@@ -84,15 +94,14 @@ cd TKS-GPT
 ```
 </br>
 
-### Recommended - fast and easy
 
-# Docker CLI / Docker Compose
+## Install with Docker CLI / Docker Compose
 
-## The simplest way is with Docker and Cloudflare tunnel
-
+### The simplest way is with Docker and Cloudflare tunnel
+---
+</br>
 Docker
 
-</br>
 
 ```bash
 docker run -d -p 5000:5000 --name tks-gpt --env OPENAI_API_KEY=your_openai_api_key --restart always ghcr.io/bigsk1/tks-gpt/tks-gpt:latest
@@ -117,11 +126,10 @@ services:
       - no-new-privileges:true
 ```
 
----
-
 </br>
 
-Build the image yourself
+### Build the image yourself
+---
 
 You can use docker cli in same folder as the Dockerfile
 
@@ -154,14 +162,17 @@ and then
 ```bash
 docker-compose up -d
 ```
-Your app will be running on http://localhost:5000 but you need https for it to work, you can see it on http but no api will be sent, see the bottom of readme for Cloudflare tunnel setup. Is possible Nginix Proxy manager could also do this. ( un tested ) 
+Your app will be running on http://localhost:5000 
 
 </br>
 
-# Linux / Debian systems 
+
+## Build on Linux or Debian
+---
+</br>
 
 THERE ARE TWO PARTS TO YOUR PROJECT A BACKEND AND A FRONTEND
-## BACKEND - python3 and flask
+### BACKEND - python3 and flask
 </br>
 
 Active Virtual Enviroment ( optional but recommended )
@@ -189,9 +200,8 @@ Exit out of virtual enviroment and back to the TKS-GPT folder ( ctl + c )
 
 </br>
 
-## FRONTEND - node and react
+### FRONTEND - node and react
 
----
 
 Install Node.js and npm:
 
@@ -212,7 +222,7 @@ See here https://github.com/nodesource/distributions
 
 Install frontend dependencies:
 
-## Ubuntu 22.04
+### Ubuntu 22.04
 
 ---
 
@@ -229,7 +239,7 @@ sudo apt-get install -y nodejs
 sudo apt-get install -y build-essential
 ```
 
-## Debian
+### Debian
 
 ---
 
@@ -272,7 +282,8 @@ Make sure you have a .env file in (TKS-GPT folder) with the required environment
 
 After completing these steps, you should be able to run both the backend and frontend servers and start using your chatbot application.
 
-### TREE VIEW of your project
+### TREE VIEW
+
 ```bash
 TKS-GPT
 ├── app.py
@@ -313,11 +324,13 @@ TKS-GPT
 ```
 </br>
 
- Backend: The Flask backend is in the TKS-GPT directory. It serves the chatbot API and the React frontend (static files in chatbot-ui/build).
+ ### Backend: The Flask backend is in the TKS-GPT directory. It serves the chatbot API and the React frontend (static files in chatbot-ui/build).
 
 </br>
 
- Frontend: The React frontend is in the chatbot-ui directory. It contains the main App.js file where the axios API call is made to the Flask backend.
+ ### Frontend: The React frontend is in the chatbot-ui directory. It contains the main App.js file where the axios API call is made to the Flask backend.
+
+
 
 </br>
 
@@ -337,7 +350,7 @@ TKS-GPT
 
 </br>
 
-## Run your project
+### Run your project
 
 ---
 
@@ -435,7 +448,7 @@ journalctl -u tkschat.service
 ```
 </br>
 
-# Set up a Cloudflare Tunnel for https
+## Set up a Cloudflare Tunnel for https (optional)
 https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide
 
 </br>
