@@ -1,15 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import './SavedChats.css';
 
-const SavedChats = ({ showSavedChats, toggleSavedChats, setCurrentChat, clearCurrentChat, currentChat }) => {
-  const [savedChats, setSavedChats] = useState([]);
-
+const SavedChats = ({ showSavedChats, toggleSavedChats, setCurrentChat, clearCurrentChat, currentChat, savedChats, setSavedChats }) => {
   useEffect(() => {
     const storedChats = localStorage.getItem('savedChats');
     if (storedChats) {
       setSavedChats(JSON.parse(storedChats));
     }
-  }, []);
+  }, [setSavedChats]);
 
   const saveCurrentChat = () => {
     const newSavedChats = [...savedChats, { id: Date.now(), chat: [...currentChat] }];
