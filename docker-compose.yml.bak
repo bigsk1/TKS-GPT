@@ -2,12 +2,11 @@ version: '3.8'
 
 services:
   app:
-    build: .
-    image: tks-gpt
+    image: ghcr.io/bigsk1/tks-gpt/tks-gpt:latest
     environment:
       - OPENAI_API_KEY=<your_openai_api_key>
     ports:
       - "5000:5000"
     restart: unless-stopped
     security_opt:
-      - no-new-privileges:true  
+      - no-new-privileges:true

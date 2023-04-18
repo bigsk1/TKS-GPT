@@ -2,16 +2,17 @@
 
 ## Open AI Chat Bot
 
-GPT 3.5 turbo with chat history but should also work with Chat GPT 4 you just need the api key for it. Is able to do lists, bullet points, email templates and code blocks! 
+GPT 3.5 turbo with chat history but should also work with Chat GPT 4 you just need the api key for it. Is able to do lists, bullet points, email templates and code blocks. Saved chat history, huge list of prompts added ⌵
+
+Add your Open AI API Key and run it on your local network http://localhost:5000 or with https:// your.domain.com either one works!
 
 </br>
 
-## Add your Open AI API Key and run it!
 </br>
 
 <div align="center">
 
-[![TKS Chat](https://img.youtube.com/vi/vUt99nVEUGM/0.jpg)](https://www.youtube.com/watch?v=vUt99nVEUGM)
+[![TKS Chat Video](https://img.youtube.com/vi/vUt99nVEUGM/0.jpg)](https://www.youtube.com/watch?v=vUt99nVEUGM)
 
 </div>
 
@@ -29,6 +30,22 @@ GPT 3.5 turbo with chat history but should also work with Chat GPT 4 you just ne
 
 
 </br>
+
+</br>
+
+<p align="center">
+<img src="./static/large.png">
+</br>
+<strong>wide view</strong>
+</p>
+
+</br>
+
+---
+
+</br>
+
+### Tree View
 
 ```bash
 
@@ -68,11 +85,13 @@ cd TKS-GPT
 </br>
 
 ### Recommended - fast and easy
+
 # Docker CLI / Docker Compose
 
 ## The simplest way is with Docker and Cloudflare tunnel
 
-One command 
+Docker
+
 </br>
 
 ```bash
@@ -80,6 +99,23 @@ docker run -d -p 5000:5000 --name tks-gpt --env OPENAI_API_KEY=your_openai_api_k
 ```
 
 </br>
+
+Docker compose
+
+```bash
+version: '3.8'
+
+services:
+  app:
+    image: ghcr.io/bigsk1/tks-gpt/tks-gpt:latest
+    environment:
+      - OPENAI_API_KEY=<your_openai_api_key>
+    ports:
+      - "5000:5000"
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+```
 
 ---
 
