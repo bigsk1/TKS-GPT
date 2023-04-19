@@ -95,7 +95,7 @@ cd TKS-GPT
 
 ## Install with Docker CLI / Docker Compose
 
-### The simplest way is with Docker and Cloudflare tunnel
+### The simplest way is with Docker
 ---
 </br>
 Docker
@@ -160,7 +160,7 @@ and then
 ```bash
 docker-compose up -d
 ```
-Your app will be running on http://localhost:5000 
+Your app will be running on http://localhost:5000 use it as is or add ssl both work with no code change needed. 
 
 </br>
 
