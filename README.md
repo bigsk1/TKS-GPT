@@ -14,7 +14,7 @@ Add your Open AI API Key and run it on your local network http://localhost:5000 
 
 1. [Clone the repo](#clone-the-repo)
 2. [Install with Docker CLI / Docker Compose](#install-with-docker-cli--docker-compose)
-3. [Build on Ubuntu or Debian](#build-on-linux-or-debian)
+3. [Build on Ubuntu or Debian](#build-on-ubuntu-or-debian)
 4. [Set up a Cloudflare Tunnel for HTTPS optional](#set-up-a-cloudflare-tunnel-for-https-optional)
 
 </br>
