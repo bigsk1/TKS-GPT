@@ -4,7 +4,7 @@ services:
   app:
     image: ghcr.io/bigsk1/tks-gpt/tks-gpt:latest
     environment:
-      - OPENAI_API_KEY=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
+      - OPENAI_API_KEY=your-api-key-here
     ports:
       - "5000:5000"
     restart: unless-stopped
