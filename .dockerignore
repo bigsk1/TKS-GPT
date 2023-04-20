@@ -10,3 +10,5 @@ __pycache__
 *.pyd
 .git
 .gitignore
+docker-compose.yml
+docker-compose.yml.bak
