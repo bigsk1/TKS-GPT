@@ -9,3 +9,5 @@ venv
 .env
 /build
 flask_app.log
+cloudflared.deb
+docker-compose.yml
