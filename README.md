@@ -1,17 +1,59 @@
-# TKS-GPT
+# TKS-GPT    
+<img src=https://img.shields.io/github/last-commit/bigsk1/tks-gpt>
 
-## Open AI Chat Bot running in Production mode and using a Cloudflare Tunnel
+## Run your own AI Chat Bot 🤖
 
+</br>
+
+Works with GPT 3.5 turbo and chat history but should also work with Chat GPT 4 you just need the api key for it. Is able to do lists, bullet points, email templates and code blocks. Saved chat history, huge list of prompts added ⌵
+
+Add your Open AI API Key and run it on your local network http://localhost:5000 or with https:// your.domain.com either one works!
 
 </br>
 
-<div align="center">
 
-[![TKS Chat](https://img.youtube.com/vi/vUt99nVEUGM/0.jpg)](https://www.youtube.com/watch?v=vUt99nVEUGM)
-
-</div>
+1. [Clone the repo](#clone-the-repo)
+2. [Install with Docker CLI / Docker Compose](#install-with-docker-cli--docker-compose)
+3. [Build on Ubuntu or Debian](#build-on-ubuntu-or-debian)
+4. [Set up a Cloudflare Tunnel for HTTPS optional](#set-up-a-cloudflare-tunnel-for-https-optional)
 
 </br>
+
+<p align="center">
+<img src="./static/tks-gpt-ai.png" style="width: 40%;">
+</br>
+<strong>Host your own Ai Chat bot</strong>
+</p>
+
+---
+
+</br>
+
+<p align="center">
+<img src="./static/tks-gpt-saved-chats.png" style="width: 40%;">
+</br>
+<strong>Save, Load and Delete Chats</strong>
+</p>
+
+</br>
+
+---
+
+</br>
+
+<p align="center">
+<img src="./static/large.png">
+</br>
+<strong>wide view</strong>
+</p>
+
+</br>
+
+---
+
+</br>
+
+### Tree View
 
 ```bash
 
@@ -32,23 +74,103 @@ Project Root
 
 </br>
 
-Built with python, flask, node.js and react
-
-Add your Open AI API Key to the .env and run it!
+### Built with python, flask, node.js and react for x86_64 (amd64) architectures and should work on docker desktop also. 
 
 </br>
 
-To install clone the repo with production branch
+
+## Clone the repo
+---
+</br>
 
 ```bash
-git clone --single-branch --branch production https://github.com/bigsk1/TKS-GPT.git
+git clone https://github.com/bigsk1/TKS-GPT.git
 ```
 
 ```bash
 cd TKS-GPT
 ```
+</br>
+
+
+## Install with Docker CLI / Docker Compose
+
+### The simplest way is with Docker
+---
+</br>
+Docker
+
+
+```bash
+docker run -d -p 5000:5000 --name tks-gpt --env OPENAI_API_KEY=your_openai_api_key --restart always ghcr.io/bigsk1/tks-gpt/tks-gpt:latest
+```
+
+</br>
+
+Docker compose
+
+```bash
+version: '3.8'
+
+services:
+  app:
+    image: ghcr.io/bigsk1/tks-gpt/tks-gpt:latest
+    environment:
+      - OPENAI_API_KEY=<your_openai_api_key>
+    ports:
+      - "5000:5000"
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+```
+
+</br>
+
+### Build the image yourself
+---
+
+You can use docker cli in same folder as the Dockerfile
+
+```bash
+docker build -t your_image_name .
+```
+```bash
+docker run -d -p 5000:5000 --name tksgpt-container --env OPENAI_API_KEY=ENTER_YOUR_OPEN_AI_APIKEY_HERE your_image_name
+```
+
+or
+</br>
+
+In the docker-compose.yml file add your Open AI Api key 
+
+```bash
+version: '3.8'
+
+services:
+  app:
+    build: .
+    image: your_custom_image_name
+    restart: unless-stopped
+    environment:
+      - OPENAI_API_KEY=your_openai_api_key
+    ports:
+      - "5000:5000"
+```
+and then 
+```bash
+docker-compose up -d
+```
+Your app will be running on http://localhost:5000 use it as is or add ssl both work with no code change needed. 
+
+</br>
+
+
+## Build on Ubuntu or Debian
+---
+</br>
+
 THERE ARE TWO PARTS TO YOUR PROJECT A BACKEND AND A FRONTEND
-## BACKEND
+### BACKEND - python3 and flask
 </br>
 
 Active Virtual Enviroment ( optional but recommended )
@@ -76,7 +198,8 @@ Exit out of virtual enviroment and back to the TKS-GPT folder ( ctl + c )
 
 </br>
 
-## FRONTEND
+### FRONTEND - node and react
+
 
 Install Node.js and npm:
 
@@ -86,18 +209,20 @@ Make sure Node.js and npm are installed on your system. You can check if they ar
 node -v
 npm -v
 ```
+You need Node version 18+
+
 
 If not installed, you can download them from the official Node.js website https://nodejs.org/en/download/
 
 </br>
 
-### On Linux / Debian systems 
-</br>
-
 See here https://github.com/nodesource/distributions
+
 Install frontend dependencies:
 
-## Ubuntu 22.04
+### Ubuntu 22.04
+
+---
 
 Node (v19.x) to current
 ```bash
@@ -112,7 +237,10 @@ sudo apt-get install -y nodejs
 sudo apt-get install -y build-essential
 ```
 
-## Debian
+### Debian
+
+---
+
 Node (v19.x) to current
 ```bash
 sudo apt install curl
@@ -152,17 +280,18 @@ Make sure you have a .env file in (TKS-GPT folder) with the required environment
 
 After completing these steps, you should be able to run both the backend and frontend servers and start using your chatbot application.
 
-### TREE VIEW of your project
+### TREE VIEW
+
 ```bash
 TKS-GPT
+├── app.py
 ├── chatbot-ui
+│   ├── build
+│   │   └── ...
+│   ├── node_modules
+│   │   └── ...
 │   ├── public
-│   │   ├── favicon.ico
-│   │   ├── index.html
-│   │   ├── logo192.png
-│   │   ├── logo512.png
-│   │   ├── manifest.json
-│   │   └── robots.txt
+│   │   └── ...
 │   ├── src
 │   │   ├── App.css
 │   │   ├── App.js
@@ -170,29 +299,36 @@ TKS-GPT
 │   │   ├── index.css
 │   │   ├── index.js
 │   │   ├── logo.svg
-│   │   └── reportWebVitals.js
+│   │   ├── MessageContent.js
+│   │   ├── Prompts.js
+│   │   ├── reportWebVitals.js
+│   │   ├── SavedChats.css
+│   │   ├── SavedChats.js
+│   │   ├── setupTests.js
+│   │   └── ...
 │   ├
 │   ├── .gitignore
 │   ├── package.json
-│   ├── package-lock.json
-│   └── README.md
-├── venv     (Python virtual environment folder)
-│   ├── bin
-│   ├── include
-│   ├── lib
-│   └── lib64
-├── app.py
+│   └── package-lock.json
+├── .dockerignore
+├── Dockerfile
+├── docker-compose.yml
 ├── .env
-└── requirements.txt
-
+├── flask_app.log
+├── .gitignore
+├── requirements.txt
+└── venv
+    └── ...
 ```
 </br>
 
- Backend: The Flask backend is in the TKS-GPT directory. It serves the chatbot API and the React frontend (static files in chatbot-ui/build).
+ ### Backend: The Flask backend is in the TKS-GPT directory. It serves the chatbot API and the React frontend (static files in chatbot-ui/build).
 
 </br>
 
- Frontend: The React frontend is in the chatbot-ui directory. It contains the main App.js file where the axios API call is made to the Flask backend.
+ ### Frontend: The React frontend is in the chatbot-ui directory. It contains the main App.js file where the axios API call is made to the Flask backend.
+
+
 
 </br>
 
@@ -212,7 +348,10 @@ TKS-GPT
 
 </br>
 
-## Run your project
+### Run your project
+
+---
+
 </br>
 
 
@@ -255,8 +394,8 @@ Description=TKS Chat Bot
 After=network.target
 
 [Service]
-User=<edit_for_user>
-Group=<edit_for_group>
+User=edit_for_user  ( normally your user name )
+Group=edit_for_group  ( normally your user name )
 WorkingDirectory=/path/to/your/flask/app/TKS-GPT
 Environment="PATH=/path/to/your/TKS-GPT/venv/bin"
 ExecStart=/path/to/your/venv/bin/python3 app.py
@@ -305,18 +444,26 @@ check systemd logs for errors
 ```bash
 journalctl -u tkschat.service
 ```
+</br>
 
-## Set up a Cloudflare Tunnel
+## Set up a Cloudflare Tunnel for https (optional)
 https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide
 
 </br>
 
 Your App will be on http://YOUR-LOCAL-IP-ADDRESS:5000
 
+</br>
+
+The easiest way is to use the UI in zero trust and make a tunnel and assign it a domain or subdomain. Allow your domain as origin, POST and GET methods, all headers.
 
 </br>
 
-Want to make updates and changes? 
+---
+
+</br>
+
+Want to make updates and changes and using systemd? 
 
 first stop systemd server for flask using
 
