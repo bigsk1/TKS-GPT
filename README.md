@@ -95,14 +95,17 @@ cd TKS-GPT
 
 ## Install with Docker CLI / Docker Compose
 
-### The simplest way is with Docker
+### The simplest way is with Docker - pull straight from dockerhub
+
+https://hub.docker.com/r/bigsk1/tks-gpt
+
 ---
 </br>
 Docker
 
 
 ```bash
-docker run -d -p 5000:5000 --name tks-gpt --env OPENAI_API_KEY=your_openai_api_key --restart always ghcr.io/bigsk1/tks-gpt/tks-gpt:latest
+docker run -d -p 5000:5000 --name tks-gpt --env OPENAI_API_KEY=your_openai_api_key --restart always bigsk1/tks-gpt:latest
 ```
 
 </br>
@@ -114,7 +117,7 @@ version: '3.8'
 
 services:
   app:
-    image: ghcr.io/bigsk1/tks-gpt/tks-gpt:latest
+    image: bigsk1/tks-gpt:latest
     environment:
       - OPENAI_API_KEY=<your_openai_api_key>
     ports:

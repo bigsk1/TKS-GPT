@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   app:
-    image: ghcr.io/bigsk1/tks-gpt/tks-gpt:latest
+    image: bigsk1/tks-gpt:latest
     environment:
       - OPENAI_API_KEY=<your_openai_api_key>
     ports:
