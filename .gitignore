@@ -9,4 +9,3 @@ venv
 .env
 /build
 flask_app.log
-docker-compose.yml
