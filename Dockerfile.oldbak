@@ -1,13 +1,7 @@
-# Build stage for the React app
-FROM node:19 AS react-build
-WORKDIR /app/chatbot-ui
-COPY chatbot-ui/package*.json ./
-RUN npm ci
-COPY chatbot-ui/ ./
-RUN npm run build
-
-# Production stage for the Python Flask app
+# Use the official Python image as a base image
 FROM python:3.10-slim
+
+# Set the working directory
 WORKDIR /app
 
 # Upgrade pip
@@ -22,10 +16,26 @@ COPY requirements.txt .
 # Install Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the React build output from the build stage
-COPY --from=react-build /app/chatbot-ui/build /app/chatbot-ui/build
+# Copy the chatbot-ui folder to the working directory
+COPY chatbot-ui /app/chatbot-ui
+
+# Install Node.js
+RUN apt-get update && \
+    apt-get install -y curl && \
+    curl -sL https://deb.nodesource.com/setup_19.x | bash - && \
+    apt-get install -y nodejs && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+# Install npm dependencies for the chatbot-ui
+WORKDIR /app/chatbot-ui
+RUN npm install
+
+# Build the React app
+RUN npm run build
 
 # Copy the rest of the application code to the working directory
+WORKDIR /app
 COPY . .
 
 # Set the environment variable for Flask

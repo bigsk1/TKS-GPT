@@ -197,7 +197,8 @@ With the virtual environment activated, install the required Python packages usi
 ```bash
 pip install -r requirements.txt
 ```
-Exit out of virtual enviroment and back to the TKS-GPT folder ( ctl + c )
+Exit out of virtual enviroment and back to the TKS-GPT folder type deactivate
+
 
 </br>
 
