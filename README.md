@@ -487,7 +487,7 @@ once built can enabled again using
 sudo systemctl restart tkschat.service
 ```
 
-
+Read more about how this app was built using Chat-GPT https://bigsk1.github.io/posts/building-an-app-with-chat-gpt/
 
 
 
