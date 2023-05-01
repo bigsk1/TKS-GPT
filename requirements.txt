@@ -20,4 +20,4 @@ six==1.16.0
 tqdm==4.65.0
 urllib3
 Werkzeug==2.2.3
-yarl==1.9.1
+yarl==1.9.2
