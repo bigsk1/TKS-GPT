@@ -31,7 +31,7 @@
 	"forwardPorts": [
 		5000
 	],
-	"postCreateCommand": "flask run --host=0.0.0.0 --no-debugger --no-reload",
+	// "postCreateCommand": "flask run --host=0.0.0.0 --no-debugger --no-reload",
     // Configure tool-specific properties.
 	"customizations": {
 		"vscode": {
