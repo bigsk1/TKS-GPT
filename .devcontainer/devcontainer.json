@@ -1,0 +1,46 @@
+{
+    "build": {
+        // Path is relative to the devcontainer.json file.
+        "dockerfile": "../Dockerfile"
+    },
+    // Features to add to the dev container. More info: https://containers.dev/features.
+	"features": {
+		"ghcr.io/devcontainers/features/common-utils:2": {
+			"installZsh": true,
+			"configureZshAsDefaultShell": true,
+			"installOhMyZsh": true,
+			"upgradePackages": true,
+			"username": "devcontainer",
+			"userUid": "automatic",
+			"userGid": "automatic"
+		},
+		"ghcr.io/devcontainers/features/docker-in-docker:2": {
+			"moby": true,
+			"azureDnsAutoDetection": true,
+			"installDockerBuildx": true,
+			"version": "latest",
+			"dockerDashComposeVersion": "v2"
+		},
+		"ghcr.io/devcontainers/features/git:1": {
+			"ppa": true,
+			"version": "os-provided"
+		}
+	},
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	"forwardPorts": [
+		5000
+	],
+	"postCreateCommand": "flask run --host=0.0.0.0 --no-debugger --no-reload",
+    // Configure tool-specific properties.
+	"customizations": {
+		"vscode": {
+		  "extensions": [
+			"dbaeumer.vscode-eslint",
+			"EditorConfig.EditorConfig",
+            "ms-python.python",
+            "ms-azuretools.vscode-docker"
+		  ]
+		}
+	  }
+}    
