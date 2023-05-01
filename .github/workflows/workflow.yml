@@ -1,0 +1,57 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - production
+  pull_request:
+    branches:
+      - production
+
+jobs:
+  frontend:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: 19
+
+    - name: Install root dependencies
+      run: npm ci
+
+    - name: Install frontend dependencies
+      run: npm ci --prefix chatbot-ui
+
+    - name: Build frontend
+      run: npm run build --prefix chatbot-ui
+
+    - name: Run frontend tests
+      run: npm test --prefix chatbot-ui
+
+  backend:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.10
+
+    - name: Upgrade pip and install setuptools
+      run: |
+        pip install --upgrade pip
+        pip install 'setuptools==66.1.1'
+
+    - name: Install backend dependencies
+      run: pip install --no-cache-dir -r requirements.txt
+
+    - name: Run backend tests
+      run: python -m unittest discover
