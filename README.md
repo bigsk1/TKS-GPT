@@ -489,7 +489,6 @@ once built can enabled again using
 sudo systemctl restart tkschat.service
 ```
 
-Read more about how this app was built using Chat-GPT https://bigsk1.github.io/posts/building-an-app-with-chat-gpt/
 
 </br>
 
@@ -505,7 +504,9 @@ cd TKS-GPT
 
 Open in Dev Container and when asked in terminal enter Open Ai Api Key, browse to localhost:5000
 
+---
 
+Read more about how this app was built using Chat-GPT https://bigsk1.github.io/posts/building-an-app-with-chat-gpt/
 
 
 
