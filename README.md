@@ -16,6 +16,8 @@ Add your Open AI API Key and run it on your local network http://localhost:5000 
 2. [Install with Docker CLI / Docker Compose](#install-with-docker-cli--docker-compose)
 3. [Build on Ubuntu or Debian](#build-on-ubuntu-or-debian)
 4. [Set up a Cloudflare Tunnel for HTTPS optional](#set-up-a-cloudflare-tunnel-for-https-optional)
+5. [Run on a devcontainer VScode](#run-on-a-devcontainer-vscode)
+
 
 </br>
 
@@ -489,9 +491,19 @@ sudo systemctl restart tkschat.service
 
 Read more about how this app was built using Chat-GPT https://bigsk1.github.io/posts/building-an-app-with-chat-gpt/
 
+</br>
+
+## Run on a Devcontainer VSCode
+
+```bash
+git clone https://github.com/bigsk1/TKS-GPT.git
+```
+```bash
+cd TKS-GPT
+```
 
 
-
+Open in Dev Container and when asked in terminal enter Open Ai Api Key, browse to localhost:5000
 
 
 
