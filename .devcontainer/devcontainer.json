@@ -31,7 +31,9 @@
 	"forwardPorts": [
 		5000
 	],
-	// "postCreateCommand": "flask run --host=0.0.0.0 --no-debugger --no-reload",
+	"appPort": 5000,
+    "remoteUser": "root",
+	"postCreateCommand": "./start_app.sh",
     // Configure tool-specific properties.
 	"customizations": {
 		"vscode": {
