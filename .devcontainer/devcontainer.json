@@ -1,8 +1,10 @@
 {
-    "build": {
-        // Path is relative to the devcontainer.json file.
-        "dockerfile": "../Dockerfile"
-    },
+	"build": {
+	  "dockerfile": "../Dockerfile",
+	  "args": {
+		"NODE_ENV": "production"
+	  }
+	},
     // Features to add to the dev container. More info: https://containers.dev/features.
 	"features": {
 		"ghcr.io/devcontainers/features/common-utils:2": {
@@ -33,7 +35,7 @@
 	],
 	"appPort": 5000,
     "remoteUser": "root",
-	"postCreateCommand": "./start_app.sh",
+	"postCreateCommand": "../start_app.sh",
     // Configure tool-specific properties.
 	"customizations": {
 		"vscode": {
