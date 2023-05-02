@@ -1,6 +1,8 @@
 # TKS-GPT    
 <img src=https://img.shields.io/github/last-commit/bigsk1/tks-gpt>
 
+[![Unit Tests](https://img.shields.io/github/actions/workflow/status/bigsk1/TKS-GPT/workflow.yml?label=unit%20tests)](https://github.com/bigsk1/TKS-GPT/actions/workflows/workflow.yml)
+
 ## Run your own AI Chat Bot 🤖
 
 </br>
