@@ -35,7 +35,7 @@
 	],
 	"appPort": 5000,
     "remoteUser": "root",
-	"postCreateCommand": "../start_app.sh",
+	"postCreateCommand": "./start_app.sh",
     // Configure tool-specific properties.
 	"customizations": {
 		"vscode": {
