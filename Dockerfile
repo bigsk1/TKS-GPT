@@ -7,7 +7,7 @@ COPY chatbot-ui/ ./
 RUN npm run build
 
 # Production stage for the Python Flask app
-FROM python:3.10-slim
+FROM python:3.11-slim
 WORKDIR /app
 
 # Upgrade pip
