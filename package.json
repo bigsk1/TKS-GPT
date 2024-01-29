@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "openai": "^4.25.0"
+    "openai": "^4.26.0"
 },
 "devDependencies": {
   "react-scripts": "5.0.1"
