@@ -5,7 +5,7 @@ attrs==23.2.0
 certifi==2023.11.17
 charset-normalizer==3.3.2
 click==8.1.7
-Flask==3.0.1
+Flask==3.0.2
 Flask-Cors==4.0.0
 frozenlist==1.4.1
 idna==3.6
